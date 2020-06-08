@@ -5,16 +5,16 @@
     @click="isOpen = !isOpen"
   >
     <p>
-      {{ selectedOption }}
+      {{ dropdownOptions[value] }}
     </p>
 
     <img src="../assets/images/arrow-down-icon.svg" alt="">
 
     <ul class="dropdown__options">
       <li
-        v-for="option in dropdownOptions"
+        v-for="(option, name) in dropdownOptions"
         :key="option"
-        @click="handleSelectedOption(option)"
+        @click="handleSelectedOption(name)"
       >
         {{ option }}
       </li>
@@ -25,21 +25,24 @@
 <script>
 export default {
   name: 'dropdown',
+  props: {
+    value: String
+  },
   data() {
     return {
       isOpen: false,
       selectedOption: 'Ordenar por',
-      dropdownOptions: [
-        'Preço',
-        'Popularidade',
-        'Ordem Alfabética'
-      ]
+      dropdownOptions: {
+        price: 'Preço',
+        score: 'Popularidade',
+        name: 'Ordem Alfabética',
+      }
     }
   },
   methods: {
     handleSelectedOption(option) {
       this.selectedOption = option
-      this.$emit('reOrder', option)
+      this.$emit('input', option)
     }
   }
 }
@@ -81,7 +84,7 @@ export default {
     width: 260px;
     max-height: 0;
     margin-top: 10px;
-    padding: 10px 0;
+    padding: 0;
     border: 1px solid #E1E1E1;
     border-radius: 4px;
     background-color: #ffffff;
@@ -91,6 +94,7 @@ export default {
     box-sizing: border-box;
     opacity: 0;
     transition: .3s;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
 
     li {
       display: flex;
