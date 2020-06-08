@@ -1,7 +1,6 @@
 <template>
   <div class="shop">
     <div class="container">
-
       <div class="product-list">
         <product-card
           v-for="(product, index) in products"
@@ -11,7 +10,7 @@
         />
       </div>
       
-      <cart />
+      <cart :items="cartItems" />
     </div>
   </div>
 </template>
