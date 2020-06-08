@@ -2,12 +2,20 @@
   <div class="shop">
     <div class="container">
       <div class="product-list">
-        <product-card
-          v-for="(product, index) in products"
-          :key="index"
-          :product="product"
-          @addToCart="addItemToCart"
-        />
+        <div class="product-list__heading">
+          <h1>Games</h1>
+
+          <dropdown />
+        </div>
+
+        <div class="product-list__items">
+          <product-card
+            v-for="(product, index) in products"
+            :key="index"
+            :product="product"
+            @addToCart="addItemToCart"
+          />
+        </div>
       </div>
       
       <cart :items="cartItems" />
@@ -20,6 +28,7 @@ import { mapActions } from 'vuex'
 import { mapGetters } from 'vuex'
 
 import Cart from '@/components/Cart'
+import Dropdown from '@/components/Dropdown'
 import ProductCard from '@/components/ProductCard'
 
 import { getProducts } from '@/services/index.js'
@@ -28,6 +37,7 @@ export default {
   name: 'shop',
   components: {
     Cart,
+    Dropdown,
     ProductCard,
   },
   data() {
@@ -71,9 +81,24 @@ export default {
 
 .product-list {
   width: 100%;
-  display: grid;
-  grid-template-columns: 260px 260px 260px;
-  justify-content: space-between;
   margin-right: 30px;
+
+  .product-list__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 55px;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  .product-list__items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 260px 260px 260px;
+    justify-content: space-between;
+  }
 }
 </style>

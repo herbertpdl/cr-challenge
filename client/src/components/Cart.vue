@@ -14,7 +14,7 @@
       </p>
     </div>
 
-    <div class="cart__items-list">
+    <div v-if="items.length" class="cart__items-list">
       <div
         v-for="(item, index) in items"
         :key="`cart-${index}`"
@@ -55,7 +55,7 @@
         <p>Total</p>
 
         <p>
-          {{ totalPrice }}
+          {{ totalPrice.toFixed(2) }}
         </p>
       </div>
     </div>
@@ -78,7 +78,7 @@ export default {
       }
 
       // Return item price
-      return this.items[0].price
+      return this.items[0].price || null
     },
     deliveryPrice() {
       // Delivery is free if the total amount is greater than R$250
