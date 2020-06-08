@@ -15,26 +15,29 @@
     </div>
 
     <div v-if="items.length" class="cart__items-list">
-      <div
-        v-for="(item, index) in items"
-        :key="`cart-${index}`"
-      >
-        <div class="cart__items-list--image">
-          <img :src="getImage(item.image)" :alt="item.name">
-        </div>
+      <div>
+        <div
+          v-for="(item, index) in items"
+          :key="`cart-${index}`"
+          class="item"
+        >
+          <div class="cart__items-list--image">
+            <img :src="getImage(item.image)" :alt="item.name">
+          </div>
 
-        <div class="cart__items-list--info">
-          <p class="name">
-            {{ item.name }}
-          </p>
-          <p class="price">
-            R$ {{ item.price }}
-          </p>
-        </div>
+          <div class="cart__items-list--info">
+            <p class="name">
+              {{ item.name }}
+            </p>
+            <p class="price">
+              R$ {{ item.price }}
+            </p>
+          </div>
 
-        <span class="cart__items-list--remove" @click="removeItemFromCart(item)">
-          x
-        </span>
+          <span class="cart__items-list--remove" @click="removeItemFromCart(item)">
+            x
+          </span>
+        </div>
       </div>
 
       <div class="subtotal">
@@ -159,10 +162,16 @@ export default {
     padding-top: 20px;
 
     >div {
+      max-height: 200px;
+      margin-bottom: 20px;
+      overflow: auto;
+    }
+
+    .item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
 
       &:hover {
         .cart__items-list--remove {
