@@ -24,5 +24,6 @@ export default {
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
 </style>
