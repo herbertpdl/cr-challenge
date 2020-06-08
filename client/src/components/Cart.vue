@@ -58,6 +58,8 @@
           {{ totalPrice.toFixed(2) }}
         </p>
       </div>
+
+      <checkout-button label="finalizar compra" />
     </div>
   </div>
 </template>
@@ -65,10 +67,15 @@
 <script>
 import { mapActions } from 'vuex'
 
+import CheckoutButton from '@/components/CheckoutButton'
+
 export default {
   name: 'cart',
   props: {
     items: Array,
+  },
+  components: {
+    CheckoutButton,
   },
   computed: {
     subTotalPrice() {

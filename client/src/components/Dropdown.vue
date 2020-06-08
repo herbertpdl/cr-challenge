@@ -5,7 +5,7 @@
     @click="isOpen = !isOpen"
   >
     <p>
-      {{ dropdownOptions[value] }}
+      {{ dropdownOptions[value] || 'Ordenar por' }}
     </p>
 
     <img src="../assets/images/arrow-down-icon.svg" alt="">
@@ -31,7 +31,6 @@ export default {
   data() {
     return {
       isOpen: false,
-      selectedOption: 'Ordenar por',
       dropdownOptions: {
         price: 'Preço',
         score: 'Popularidade',
@@ -41,7 +40,6 @@ export default {
   },
   methods: {
     handleSelectedOption(option) {
-      this.selectedOption = option
       this.$emit('input', option)
     }
   }

@@ -5,7 +5,7 @@
         <div class="product-list__heading">
           <h1>Games</h1>
 
-          <dropdown />
+          <dropdown v-model="orderBy" />
         </div>
 
         <div class="product-list__items">
@@ -43,6 +43,12 @@ export default {
   data() {
     return {
       products: [],
+      orderBy: '',
+    }
+  },
+  watch: {
+    orderBy(newValue) {
+      this.reorderProducts(newValue)
     }
   },
   computed: {
@@ -55,10 +61,23 @@ export default {
       })
   },
   methods: {
-    // map `this.handleCartItems()` to `this.$store.dispatch('handleCartItems')`
     ...mapActions(['handleCartItems']),
     addItemToCart(item) {
       this.handleCartItems({ type: 'add', item})
+    },
+    reorderProducts(key) {
+      // Function used to compare array items
+      const compareByKey = (a, b) => {
+        if (a[key] < b[key]) {
+        return -1
+        } else if (a[key] > b[key]) {
+          return 1
+        }
+
+        return 0
+      }
+
+      this.products.sort(compareByKey)
     }
   }
 }
