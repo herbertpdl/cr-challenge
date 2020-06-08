@@ -1,6 +1,6 @@
 <template>
   <div class="cart">
-    <p>
+    <p class="cart__title">
       Carrinho
       <span v-if="items.length">
         ({{ items.length }} itens)
@@ -24,11 +24,11 @@
         </div>
 
         <div class="cart__items-list--info">
-          <p>
+          <p class="name">
             {{ item.name }}
           </p>
-          <p>
-            {{ item.price }}
+          <p class="price">
+            R$ {{ item.price }}
           </p>
         </div>
 
@@ -37,25 +37,25 @@
         </span>
       </div>
 
-      <div>
+      <div class="subtotal">
         <p>Subtotal</p>
-        <p>
+        <p class="subtotal__price">
           R$ {{ subTotalPrice.toFixed(2) }}
         </p>
       </div>
 
-      <div>
+      <div class="freigth">
         <p>Frete</p>
-        <p>
+        <p class="freigth__price">
           R$ {{ deliveryPrice.toFixed(2) }}
         </p>
       </div>
 
-      <div>
+      <div class="total">
         <p>Total</p>
 
-        <p>
-          {{ totalPrice.toFixed(2) }}
+        <p class="total__price">
+          R$ {{ totalPrice.toFixed(2) }}
         </p>
       </div>
 
@@ -118,11 +118,23 @@ export default {
   min-height: 325px;
   padding: 25px;
   border: 1px solid #E1E1E1;
-  border-radius: 3px;
+  border-radius: 4px;
   text-align: left;
 
   p {
     margin: 0;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+
+    span {
+      color: #7F7575;
+      font-size: 14px;
+      font-weight: normal;
+      margin-left: 5px;
+    }
   }
 
   &__empty-image {
@@ -134,7 +146,12 @@ export default {
       display: block;
       width: 90px;
       height: 72px;
-      margin: 0 auto;
+      margin: 0 auto 15px auto;
+    }
+
+    p {
+      color: #746A6A;
+      font-size: 14px;
     }
   }
 
@@ -174,6 +191,16 @@ export default {
     &--info {
       margin-right: 10px;
       flex: 1;
+
+      .name {
+        color: #7F7575;
+        font-size: 14px;
+      }
+
+      .price {
+        font-size: 14px;
+        font-weight: bold;
+      }
     }
     
     &--remove {
@@ -186,9 +213,30 @@ export default {
       color: #ffffff;
       font-size: 12px;
       text-align: center;
+      line-height: 100%;
       opacity: 0;
       pointer-events: none;
       cursor: pointer;
+    }
+
+    .subtotal,
+    .freigth,
+    .total {
+      color: #7F7575;
+      font-size: 14px;
+    }
+
+    .subtotal__price,
+    .freigth__price {
+      color: #423B3B;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .total__price {
+      color: #423B3B;
+      font-size: 20px;
+      font-weight: bold;
     }
   }
 }

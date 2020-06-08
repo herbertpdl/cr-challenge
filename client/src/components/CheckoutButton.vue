@@ -22,6 +22,7 @@ export default {
   background-color: #54A3FF;
   color: #ffffff;
   font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
 }
 </style>

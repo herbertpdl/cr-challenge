@@ -64,9 +64,14 @@ export default {
     }
   }
 
+  &__title {
+    color: #746A6A;
+  }
+
   &__price,
   &__add-cart {
     color: #3486E6;
+    font-weight: bold;
   }
 
   &__add-cart {

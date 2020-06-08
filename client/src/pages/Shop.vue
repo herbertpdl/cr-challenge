@@ -110,6 +110,8 @@ export default {
 
     h1 {
       margin: 0;
+      font-size: 48px;
+      color: #363636;
     }
   }
 
