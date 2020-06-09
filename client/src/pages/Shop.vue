@@ -5,7 +5,7 @@
         <div class="product-list__heading">
           <h1>Games</h1>
 
-          <dropdown v-model="orderBy" />
+          <dropdown v-model="orderBy" :options="dropdownOptions" />
         </div>
 
         <div class="product-list__items">
@@ -44,6 +44,11 @@ export default {
     return {
       products: [],
       orderBy: '',
+      dropdownOptions: {
+        price: 'Preço',
+        score: 'Popularidade',
+        name: 'Ordem Alfabética',
+      }
     }
   },
   watch: {

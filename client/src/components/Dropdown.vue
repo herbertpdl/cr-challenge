@@ -5,14 +5,14 @@
     @click="isOpen = !isOpen"
   >
     <p>
-      {{ dropdownOptions[value] || 'Ordenar por' }}
+      {{ options[value] || 'Ordenar por' }}
     </p>
 
     <img src="../assets/images/arrow-down-icon.svg" alt="">
 
     <ul class="dropdown__options">
       <li
-        v-for="(option, name) in dropdownOptions"
+        v-for="(option, name) in options"
         :key="option"
         @click="handleSelectedOption(name)"
       >
@@ -26,16 +26,12 @@
 export default {
   name: 'dropdown',
   props: {
-    value: String
+    value: String,
+    options: Object,
   },
   data() {
     return {
       isOpen: false,
-      dropdownOptions: {
-        price: 'Preço',
-        score: 'Popularidade',
-        name: 'Ordem Alfabética',
-      }
     }
   },
   methods: {
