@@ -1,20 +1,29 @@
-import { shallowMount, createWrapper } from '@vue/test-utils'
-
+import { shallowMount } from '@vue/test-utils'
 import Dropdown from '@/components/Dropdown'
 
 describe('Tests for Dropdown', () => {
+  let wrapper = null
   // mount component with options prop
-  const wrapper = shallowMount(Dropdown, {
-    propsData: {
-      options: {
-        price: 'Preço',
-        score: 'Popularidade',
-        name: 'Ordem Alfabética',
-      }
-    }
+
+  beforeEach(() => {
+    // Do Nothing - render the components in each unit test
+  })
+
+  afterEach(() => {
+    wrapper.destroy()
   })
 
   it ('Should have the right initial values', () => {
+    wrapper = shallowMount(Dropdown, {
+      propsData: {
+        options: {
+          price: 'Preço',
+          score: 'Popularidade',
+          name: 'Ordem Alfabética',
+        }
+      }
+    })
+
     // validate that 3 options was created
     expect(wrapper.findAll('.dropdown__options li').length).toEqual(3)
 
@@ -25,6 +34,16 @@ describe('Tests for Dropdown', () => {
   })
 
   it ('Should open and close when clicking', async () => {
+    wrapper = shallowMount(Dropdown, {
+      propsData: {
+        options: {
+          price: 'Preço',
+          score: 'Popularidade',
+          name: 'Ordem Alfabética',
+        }
+      }
+    })
+    
     // validate handle isOpen data (isOpen starts with false value)
 
     await wrapper.trigger('click')

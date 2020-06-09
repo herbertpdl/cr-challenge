@@ -75,7 +75,10 @@ import CheckoutButton from '@/components/CheckoutButton'
 export default {
   name: 'cart',
   props: {
-    items: Array,
+    items: {
+      type: Array,
+      default: () => []
+    },
   },
   components: {
     CheckoutButton,

@@ -1,22 +1,31 @@
 import { shallowMount } from '@vue/test-utils'
-
 import ProductCard from '@/components/ProductCard'
 
 describe('Tests for ProductCard', () => {
-  // mount component with product prop
-  const wrapper = shallowMount(ProductCard, {
-    propsData: {
-      product: {
-        id: 74,
-        name: "Shards of Darkness",
-        price: 71.94,
-        score: 400,
-        image: "shards-of-darkness.png"
-      }
-    }
+  let wrapper = null
+
+  beforeEach(() => {
+    // Do Nothing - render the components in each unit test
   })
 
+  afterEach(() => {
+    wrapper.destroy()
+  })
+  
   it('Should have the right initial values', () => {
+    // mount component with product prop
+    wrapper = shallowMount(ProductCard, {
+      propsData: {
+        product: {
+          id: 74,
+          name: "Shards of Darkness",
+          price: 71.94,
+          score: 400,
+          image: "shards-of-darkness.png"
+        }
+      }
+    })
+
     const productTitle = wrapper.find('.product-card__title')
     const productPrice = wrapper.find('.product-card__price')
     
@@ -28,6 +37,18 @@ describe('Tests for ProductCard', () => {
   })
 
   it('Should emmit add to cart event', () => {
+    wrapper = shallowMount(ProductCard, {
+      propsData: {
+        product: {
+          id: 74,
+          name: "Shards of Darkness",
+          price: 71.94,
+          score: 400,
+          image: "shards-of-darkness.png"
+        }
+      }
+    })
+
     const addToCart = wrapper.find('.product-card__add-cart')
 
     // simulate click in add to cart element
