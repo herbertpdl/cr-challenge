@@ -64,10 +64,8 @@ const products = [
   }
 ]
 
-const productsPropmise = new Promise((resolve) => {
-  resolve(products)
-})
-
 export function getProducts() {
-  return productsPropmise
+  return new Promise((resolve) => {
+    resolve(products)
+  })
 }
